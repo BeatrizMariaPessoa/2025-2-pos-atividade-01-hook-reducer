@@ -13,7 +13,7 @@ function NovaTarefa() {
 
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = () => {
 
       if (!nome.trim()) {
         alert("Nome da tarefa é obrigatório!");
