@@ -6,43 +6,48 @@ import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea"
 
+import { useReducer } from "react";
+import { reducer, initialState } from "@/lib/tarefasReducer";
+
 
 function NovaTarefa() {
-    const [nome, setNome] = useState("");
-    const [descricao, setDescricao] = useState("");
-
+    const [state, dispatch] = useReducer(reducer, initialState);
 
 
     const handleSubmit = () => {
 
-      if (!nome.trim()) {
-        alert("Nome da tarefa é obrigatório!");
-        return;
-      }
+        if (!nome.trim()) {
+            alert("Nome da tarefa é obrigatório!");
+            return;
+        }
+        dispatch({
+            type: "adicionar_tarefa",
+            payload: { nome,descricao },
+            })
 
-      
-      const tarefas = JSON.parse(localStorage.getItem("tarefas") || "[]");
-      const novoId = tarefas.length + 1;
-
-
-      
-      const novaTarefa = {
-        id: novoId,
-        nome: nome.trim(),
-        descricao: descricao.trim(),
-        concluida: false,
-      };
+        
+    //     const tarefas = JSON.parse(localStorage.getItem("tarefas") || "[]");
+    //     const novoId = tarefas.length + 1;
 
 
+        
+    //     const novaTarefa = {
+    //         id: novoId,
+    //         nome: nome.trim(),
+    //         descricao: descricao.trim(),
+    //         concluida: false,
+    //     };
 
-      tarefas.push(novaTarefa);
-      localStorage.setItem("tarefas", JSON.stringify(tarefas));
 
-      setNome("");
-      setDescricao("");
+
+    //   tarefas.push(novaTarefa);
+    //   localStorage.setItem("tarefas", JSON.stringify(tarefas));
+
+    //   setNome("");
+    //   setDescricao("");
 
       alert("Tarefa salva com sucesso!");
-      console.log("Tarefa salva:", novaTarefa);
+      console.log("Tarefa salva:", state.tarefas);
     };
 
 
