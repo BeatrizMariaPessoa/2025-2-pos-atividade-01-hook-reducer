@@ -9,7 +9,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { useReducer } from "react";
 import { reducer, initialState } from "@/lib/tarefasReducer";
 
-
 function NovaTarefa() {
     const [state, dispatch] = useReducer(reducer, initialState);
 
