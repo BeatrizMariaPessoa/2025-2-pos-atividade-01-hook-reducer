@@ -8,7 +8,9 @@ export const reducer = (state, action) => {
     switch (action.type) {
         case "adicionar_tarefa":
             const tarefas = JSON.parse(localStorage.getItem("tarefas") || "[]");
-            const novoId = tarefas.length + 1;
+            const novoId = tarefas.length > 0 
+                ? Math.max(...tarefas.map(t => t.id)) + 1
+                : 1;
 
             const novaTarefa ={
                 id: novoId,

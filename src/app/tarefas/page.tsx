@@ -34,24 +34,16 @@ function TarefasPage() {
           {state.tarefas.length === 0 ? (
             <p>Nenhuma tarefa encontrada</p>
           ) : (
-            state.tarefa.map((tarefa: Tarefa) => (
+            <ul className="flex flex-col gap-2 mt-4">
+            {state.tarefas.map((tarefa: Tarefa) => (
               <li key={tarefa.id} className="border-2 p-2 rounded-sm pb-2 border-gray-300 flex flex-row justify-between items-top">
                 <div className="max-w-7xl">
                   <h2 className="text-lg font-semibold mb-4">{tarefa.nome}</h2>
                   <Badge variant={"destructive"} className="mb-2">
-                    pendente
+                    {tarefa.concluida ? "Concluída" : "Pendente"}
                   </Badge>
                   <p className="">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. P
-                    inventore maiores. Maxime expedita, beatae accusamus culpa
-                    quos adipisci inventore assumenda repellendus, cumque iusto
-                    itaque alias fugiat quidem ea. Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Nam porro quas inventore
-                    maiores. Maxime expedita, beatae accusamus culpa quos
-                    adipisci inventore assumenda repellendus, cumque iusto
-                    itaque alias fugiat quidem ea. delectus, exercitationem
-                    totam atque fuga reiciendis! Accusantium, pariatur sapiente.
-                    Mollitia hic iste molestiae a?
+                    {tarefa.descricao}
                   </p>
                 </div>
                 <div className="space-x-3">
@@ -63,7 +55,9 @@ function TarefasPage() {
                   </Button>
                 </div>
               </li>
-            ))
+
+            ))}
+          </ul>
           )}
 
           <ul className="flex flex-col gap-2 mt-4"></ul>
