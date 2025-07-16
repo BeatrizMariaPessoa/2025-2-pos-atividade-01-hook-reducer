@@ -48,10 +48,10 @@ function TarefasPage() {
                 </div>
                 <div className="space-x-3">
                   <Button variant="outline" className="mt-2">
-                    <Link href="/tarefas/nova">Editar</Link>
+                    <Link href={`/tarefas/${tarefa.id}`}>Editar</Link>
                   </Button>
                   <Button variant="destructive" className="mt-2">
-                    <Link href="/tarefas/nova">Apagar</Link>
+                    <Link href={`/tarefas/${tarefa.id}/apagar`}>Apagar</Link>
                   </Button>
                 </div>
               </li>

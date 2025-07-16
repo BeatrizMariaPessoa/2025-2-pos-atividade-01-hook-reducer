@@ -31,6 +31,18 @@ export const reducer = (state, action) => {
                 ...state,
                 tarefas: JSON.parse(tarefasTotais || "[]"),
             };
+        case "editar_tarefa":
+            const tarefasEditadas = JSON.parse(localStorage.getItem("tarefas") || "[]");
+            const tarefaEditada = tarefasEditadas.find(t => t.id === action.payload.id);
+            if (tarefaEditada) {
+                tarefaEditada.nome = action.payload.nome;
+                tarefaEditada.descricao = action.payload.descricao;
+                localStorage.setItem("tarefas", JSON.stringify(tarefasEditadas));
+            }
+            return {
+                ...state,
+                tarefas: [...tarefasEditadas],
+            };
         default:
             return state;
     }
